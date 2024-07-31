@@ -1,3 +1,9 @@
+import org.gradle.util.internal.GUtil.loadProperties
+
+private val deployProperties = loadProperties(
+    file("publish.properties")
+)
+
 pluginManagement {
     repositories {
         google {
@@ -16,6 +22,13 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+
+        maven(deployProperties["githubRepoUrl"].toString()) {
+            credentials {
+                username = deployProperties["githubUserName"].toString()
+                password = deployProperties["githubToken"].toString()
+            }
+        }
     }
 }
 

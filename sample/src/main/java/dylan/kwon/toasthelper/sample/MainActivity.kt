@@ -25,8 +25,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import dylan.kwon.toasthelper.android.AndroidToastFactory
-import dylan.kwon.toasthelper.core.ToastHelper
 import dylan.kwon.toasthelper.sample.ui.theme.ToasthelperTheme
 
 class MainActivity : ComponentActivity() {

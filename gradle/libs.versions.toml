@@ -10,6 +10,7 @@ activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 jetbrainsKotlinJvm = "2.0.0"
 startup = "1.1.1"
+toastHelper = "1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -29,6 +30,11 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-startup-runtime = { group = "androidx.startup", name = "startup-runtime", version.ref = "startup" }
+
+# Toast Helper
+toastHelper-core = { group = "dylan.kwon", name = "toast-helper-core", version.ref = "toastHelper" }
+toastHelper-android = { group = "dylan.kwon", name = "toast-helper-android", version.ref = "toastHelper" }
+toastHelper-test = { group = "dylan.kwon", name = "toast-helper-test", version.ref = "toastHelper" }
 
 
 [plugins]

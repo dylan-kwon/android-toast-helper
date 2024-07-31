@@ -1,6 +1,9 @@
+import org.jetbrains.kotlin.konan.properties.loadProperties
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -14,21 +17,37 @@ android {
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = "1.8"
+    }
+}
+
+publishing {
+    val properties = loadProperties(
+        rootProject.file("publish.properties").path
+    )
+    repositories {
+        maven(properties["githubRepoUrl"].toString()) {
+            credentials {
+                username = properties["githubUserName"].toString()
+                password = properties["githubToken"].toString()
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>(name) {
+            groupId = properties["groupId"].toString()
+            artifactId = "toast-helper-android"
+            version = properties["versionName"].toString()
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
     }
 }
 
