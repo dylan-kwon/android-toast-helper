@@ -8,7 +8,8 @@
             android:authorities="${applicationId}.androidx-startup"
             android:exported="false"
             tools:node="merge">
-            <meta-data  android:name="dylan.kwon.toasthelper.android.startup.AndroidToastHelperInitializer"
+            <meta-data
+                android:name="dylan.kwon.toasthelper.android.startup.AndroidToastHelperInitializer"
                 android:value="androidx.startup" />
         </provider>
     </application>
