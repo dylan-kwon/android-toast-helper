@@ -13,7 +13,8 @@ However, event-based implementations like SharedFlow risk losing events, and sta
 can lead to unintended duplicate processing during reconstructions, such as screen rotations. Therefore, additional
 measures are needed to prevent these issues.
 
-The purpose of this library is to simplify the cumbersome process of executing Toasts.
+I find these steps cumbersome and excessive just to execute a Toast. The purpose of this library is
+to make using Toasts easy.
 
 ## Install
 
