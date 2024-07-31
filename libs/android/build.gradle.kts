@@ -34,6 +34,7 @@ android {
 
 dependencies {
     api(projects.libs.core)
+    implementation(libs.androidx.startup.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

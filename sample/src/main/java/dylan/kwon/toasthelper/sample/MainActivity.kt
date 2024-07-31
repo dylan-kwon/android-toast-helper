@@ -33,10 +33,6 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ToastHelper.setFactory(
-            AndroidToastFactory(applicationContext)
-        )
-
         enableEdgeToEdge()
         setContent {
             ToasthelperTheme {

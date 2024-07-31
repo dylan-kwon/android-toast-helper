@@ -6,12 +6,14 @@ package dylan.kwon.toasthelper.core
 data class ToastMargin(
 
     /**
-     * Horizontal Fraction. (0 - 1.0)
+     * The horizontal margin, in percentage of the container width,
+     * between the container's edges and the notification.
      */
     val horizontalFraction: Float,
 
     /**
-     * Vertical Fraction. (0 - 1.0)
+     * The vertical margin, in percentage of the container height,
+     * between the container's edges and the notification.
      */
     val verticalFraction: Float
 

@@ -1,6 +1,7 @@
 package dylan.kwon.toasthelper.sample
 
 import androidx.lifecycle.ViewModel
+import dylan.kwon.toasthelper.android.AndroidToastFactory
 import dylan.kwon.toasthelper.core.ToastCancellation
 import dylan.kwon.toasthelper.core.ToastDuration
 import dylan.kwon.toasthelper.core.ToastHelper

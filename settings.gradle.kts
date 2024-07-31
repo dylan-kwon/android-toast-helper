@@ -23,7 +23,7 @@ rootProject.name = "toast-helper"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-include(":app")
+include(":sample")
 include(":libs:core")
 include(":libs:android")
 
