@@ -67,7 +67,7 @@ testImplementation("dylan.kwon:toast-helper-test:$version")
 
 ### Initialization
 
-ToastHelper is `automatically initialized` at startup in an Android environment.
+The Toast helper is `automatically initialized` using the Jetpack startup.
 
 ### Disable Auto-Initialization
 
