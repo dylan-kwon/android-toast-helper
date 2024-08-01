@@ -1,22 +1,28 @@
 # Android Toast Helper
 
-Toast Helper is a library designed to facilitate the use of Toast notifications while hiding Android dependencies.
+Toast Helper is a library designed to facilitate the use of Toast notifications while hiding Android
+dependencies.
 
 ## Necessity
 
-Although Toasts are frequently used in many apps and screens, they can be challenging to use in layers that aim to
+Although Toasts are frequently used in many apps and screens, they can be challenging to use in
+layers that aim to
 exclude framework dependencies, such as MVVM's ViewModel.
 
-For instance, after adding or deleting data in an app, you might use a Toast to notify the user. Typically, to achieve
-this in a ViewModel, you would define a state or event for the Toast execution and observe it in the UI to handle.
-However, event-based implementations like SharedFlow risk losing events, and state-based implementations like StateFlow
-can lead to unintended duplicate processing during reconstructions, such as screen rotations. Therefore, additional
+For instance, after adding or deleting data in an app, you might use a Toast to notify the user.
+Typically, to achieve
+this in a ViewModel, you would define a state or event for the Toast execution and observe it in the
+UI to handle.
+However, event-based implementations like SharedFlow risk losing events, and state-based
+implementations like StateFlow
+can lead to unintended duplicate processing during reconstructions, such as screen rotations.
+Therefore, additional
 measures are needed to prevent these issues.
 
 I find these steps cumbersome and excessive just to execute a Toast. The purpose of this library is
 to make using Toasts easy.
 
-## Install
+## Installation
 
 ```kotlin
 dependencyResolutionManagement {
@@ -59,11 +65,13 @@ testImplementation("dylan.kwon:toast-helper-test:$version")
 
 ## How To Use
 
-### Initialize
+### Initialization
 
-ToastHelper is automatically initialized at startup in an Android environment.
+ToastHelper is `automatically initialized` at startup in an Android environment.
 
-However, if you do not want it to be initialized automatically for any reason, you can configure it as follows:
+### Disable Auto-Initialization
+
+If you do not want automatic initialization, you can disable it.
 
 #### manifest.xml
 
@@ -71,15 +79,11 @@ Exclude AndroidToastHelperInitializer during startup initialization.
 
 ```xml
 
-<provider
-    android:name="androidx.startup.InitializationProvider"
-    android:authorities="${applicationId}.androidx-startup"
-    android:exported="false"
+<provider android:name="androidx.startup.InitializationProvider"
+    android:authorities="${applicationId}.androidx-startup" android:exported="false"
     tools:node="merge">
-    <meta-data
-        android:name="dylan.kwon.toasthelper.android.startup.AndroidToastHelperInitializer"
-        android:value="androidx.startup"
-        tools:node="remove"/>
+    <meta-data android:name="dylan.kwon.toasthelper.android.startup.AndroidToastHelperInitializer"
+        android:value="androidx.startup" tools:node="remove" />
 </provider>
 
 ```
@@ -92,7 +96,8 @@ ToastHelper.setFactory(
 )
 ```
 
-> In addition to the AndroidToastFactory provided by the library, you can create and set custom objects. For more
+> In addition to the AndroidToastFactory provided by the library, you can create and set custom
+> objects. For more
 > information on customization, please refer [here](.#Custom).
 
 ### Basic
@@ -216,7 +221,8 @@ class MyTest {
 
 Some people might want to modify the behavior of ToastHelper.
 
-For example, in a test environment, it uses println instead of Toast to output in the following format:
+For example, in a test environment, it uses println instead of Toast to output in the following
+format:
 
 ```kotlin
 println("[TOAST][$durationName] $toastMessage")
