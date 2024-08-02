@@ -32,7 +32,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "toast-helper"
+rootProject.name = "android-toast-helper"
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
