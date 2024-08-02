@@ -31,7 +31,7 @@ dependencyResolutionManagement {
         ..
         maven("https://maven.pkg.github.com/dylan-kwon/android-toast-helper") {
             credentials {
-                username = INPUT_YOUR_USER_NAME
+                username = INPUT_YOUR_GITHUB_USER_NAME
                 password = INPUT_YOUR_GITHUB_TOKEN
             }
         }
