@@ -9,6 +9,7 @@ lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.1"
 composeBom = "2024.06.00"
 jetbrainsKotlinJvm = "2.0.0"
+androidxAnnotation = "1.9.1"
 startup = "1.1.1"
 toastHelper = "1.0.0"
 
@@ -30,6 +31,7 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-startup-runtime = { group = "androidx.startup", name = "startup-runtime", version.ref = "startup" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidxAnnotation" }
 
 # Toast Helper
 toastHelper-core = { group = "dylan.kwon", name = "toast-helper-core", version.ref = "toastHelper" }

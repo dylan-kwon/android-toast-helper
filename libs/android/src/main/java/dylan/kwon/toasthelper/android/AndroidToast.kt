@@ -1,6 +1,8 @@
 package dylan.kwon.toasthelper.android
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import dylan.kwon.toasthelper.android.mapper.addCallbacks
 import dylan.kwon.toasthelper.android.mapper.mapActualHiddenCallbacks
 import dylan.kwon.toasthelper.android.mapper.mapActualShownCallbacks
@@ -68,7 +70,10 @@ class AndroidToast(
     ).apply {
         setMargin()
         setPosition()
-        addCallbacks()
+
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.R) {
+            addCallbacks()
+        }
     }
 
     /**
@@ -101,6 +106,7 @@ class AndroidToast(
     /**
      * Maps the callback to [android.widget.Toast.Callback] and then adds it to the toast.
      */
+    @RequiresApi(Build.VERSION_CODES.R)
     private fun ActualToast.addCallbacks() {
         addCallbacks(onShownCallbacks.mapActualShownCallbacks())
         addCallbacks(onHiddenCallbacks.mapActualHiddenCallbacks())
