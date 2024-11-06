@@ -27,22 +27,25 @@ android {
 }
 
 publishing {
-    val properties = loadProperties(
+    val publishProperties = loadProperties(
         rootProject.file("publish.properties").path
     )
+    val versionProperties = loadProperties(
+        rootProject.file("version.properties").path
+    )
     repositories {
-        maven(properties["githubRepoUrl"].toString()) {
+        maven(publishProperties["githubRepoUrl"].toString()) {
             credentials {
-                username = properties["githubUserName"].toString()
-                password = properties["githubToken"].toString()
+                username = publishProperties["githubUserName"].toString()
+                password = publishProperties["githubToken"].toString()
             }
         }
     }
     publications {
         register<MavenPublication>(name) {
-            groupId = properties["groupId"].toString()
+            groupId = publishProperties["groupId"].toString()
             artifactId = "toast-helper-android"
-            version = properties["versionName"].toString()
+            version = versionProperties["versionName"].toString()
 
             afterEvaluate {
                 from(components["release"])

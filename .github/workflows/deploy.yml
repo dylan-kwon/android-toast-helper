@@ -1,0 +1,38 @@
+name: Product Deploy
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  Publishing:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup.
+      - name: Setup Env
+        run: |
+          VERSION_NAME=$(grep "versionName" ./version.properties | cut -d "=" -f 2)
+
+      # Checkout.
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # JDK Setup.
+      - name: set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      # Publishing.
+      - name: Build
+        run: ./gradlew publish
+
+      # Release.
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v${{ env.VERSION_NAME }}
+          generateReleaseNotes: true
