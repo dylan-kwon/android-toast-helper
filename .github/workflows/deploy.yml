@@ -9,10 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Setup.
+      # Setup Env.
       - name: Setup Env
         run: |
           VERSION_NAME=$(grep "versionName" ./version.properties | cut -d "=" -f 2)
+          echo '${{ secrets.PUBLISH_PROPERTIES }}' | openssl base64 -d -out ./publish.properties
 
       # Checkout.
       - name: Checkout
