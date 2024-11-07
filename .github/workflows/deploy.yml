@@ -27,16 +27,15 @@ jobs:
           cache: gradle
 
       - name: Set up Android SDK (Only on Act)
-        if: ${{ env.ACT }}
+        if: success() && ${{ env.ACT }}
         uses: android-actions/setup-android@v3
 
       - name: Publish
-        if: ${{ !env.ACT }}
         run: ./gradlew publish
 
       - name: Release
-        if: ${{ !env.ACT }}
         uses: ncipollo/release-action@v1
         with:
           tag: v${{ env.VERSION_NAME }}
-          generateReleaseNotes: true
+          allowUpdates: true
+          skipIfReleaseExists: true
