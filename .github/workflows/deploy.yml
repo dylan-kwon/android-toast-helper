@@ -3,6 +3,8 @@ name: Product Deploy
 on:
   push:
     branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   Publishing:
@@ -27,7 +29,7 @@ jobs:
           cache: gradle
 
       - name: Set up Android SDK (Only on Act)
-        if: success() && ${{ env.ACT }}
+        if: ${{ success() && env.ACT }}
         uses: android-actions/setup-android@v3
 
       - name: Publish
@@ -38,4 +40,4 @@ jobs:
         with:
           tag: v${{ env.VERSION_NAME }}
           allowUpdates: true
-          skipIfReleaseExists: true
+          generateReleaseNotes: true
