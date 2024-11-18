@@ -1,17 +1,18 @@
 [versions]
-agp = "8.6.0"
+agp = "8.6.1"
 kotlin = "2.0.0"
-coreKtx = "1.13.1"
+coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-composeBom = "2024.10.01"
+composeBom = "2024.11.00"
 jetbrainsKotlinJvm = "2.0.0"
 androidxAnnotation = "1.9.1"
 startup = "1.2.0"
-toastHelper = "1.0.0"
+vanniktechMavenPublish = "0.30.0"
+toastHelper = "1.1.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,14 +35,16 @@ androidx-startup-runtime = { group = "androidx.startup", name = "startup-runtime
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "androidxAnnotation" }
 
 # Toast Helper
-toastHelper-core = { group = "dylan.kwon", name = "toast-helper-core", version.ref = "toastHelper" }
-toastHelper-android = { group = "dylan.kwon", name = "toast-helper-android", version.ref = "toastHelper" }
-toastHelper-test = { group = "dylan.kwon", name = "toast-helper-test", version.ref = "toastHelper" }
+toastHelper-core = { group = "io.github.dylan-kwon", name = "toast-helper-core", version.ref = "toastHelper" }
+toastHelper-android = { group = "io.github.dylan-kwon", name = "toast-helper-android", version.ref = "toastHelper" }
+toastHelper-test = { group = "io.github.dylan-kwon", name = "toast-helper-test", version.ref = "toastHelper" }
 
 
 [plugins]
+java-library = { id = "java-library" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktechMavenPublish" }

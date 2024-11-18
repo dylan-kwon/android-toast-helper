@@ -1,47 +1,65 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.kotlin.konan.properties.loadProperties
 
 plugins {
-    id("java-library")
-    id("maven-publish")
+    id(libs.plugins.java.library.get().pluginId)
     alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.vanniktech.maven.publish)
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
-
-    withSourcesJar()
-    withJavadocJar()
 }
 
 kotlin {
     jvmToolchain(17)
 }
 
-publishing {
+mavenPublishing {
     val publishProperties = loadProperties(
         rootProject.file("publish.properties").path
     )
+
     val versionProperties = loadProperties(
         rootProject.file("version.properties").path
     )
-    repositories {
-        maven(publishProperties["githubRepoUrl"].toString()) {
-            credentials {
-                username = publishProperties["githubUserName"].toString()
-                password = publishProperties["githubToken"].toString()
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
+
+    coordinates(
+        groupId = publishProperties["groupId"].toString(),
+        artifactId = "toast-helper-core",
+        version = versionProperties["versionName"].toString()
+    )
+
+    pom {
+        name = publishProperties["artifactId"].toString()
+        description = publishProperties["description"].toString()
+        url = publishProperties["repository"].toString()
+
+        licenses {
+            license {
+                name = publishProperties["licenseName"].toString()
+                url = publishProperties["licenseUrl"].toString()
             }
         }
-    }
-    publications {
-        register<MavenPublication>(name) {
-            groupId = publishProperties["groupId"].toString()
-            artifactId = "toast-helper-core"
-            version = versionProperties["versionName"].toString()
 
-            afterEvaluate {
-                from(components["java"])
+        developers {
+            developer {
+                id = publishProperties["developerId"].toString()
+                name = publishProperties["developerName"].toString()
+                email = publishProperties["developerEmail"].toString()
+                url = publishProperties["developerUrl"].toString()
             }
+        }
+
+        scm {
+            url = this@pom.url
+            connection = publishProperties["scmConnection"].toString()
+            developerConnection = publishProperties["scmDeveloperConnection"].toString()
         }
     }
 }

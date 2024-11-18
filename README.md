@@ -1,3 +1,5 @@
+![Maven Central Version](https://img.shields.io/maven-central/v/io.github.dylan-kwon/toast-helper-core)
+
 # Android Toast Helper
 
 Toast Helper is a library designed to facilitate the use of Toast notifications while hiding Android
@@ -24,27 +26,12 @@ to make using Toasts easy.
 
 ## Installation
 
-```kotlin
-dependencyResolutionManagement {
-    ..
-    repositories {
-        ..
-        maven("https://maven.pkg.github.com/dylan-kwon/android-toast-helper") {
-            credentials {
-                username = INPUT_YOUR_GITHUB_USER_NAME
-                password = INPUT_YOUR_GITHUB_TOKEN
-            }
-        }
-    }
-}
-```
-
 ### Without Framework Dependency
 
 It is a core module without Android dependencies.
 
 ```kotlin
-implementation("dylan.kwon:toast-helper-core:$version")
+implementation("io.github.dylan-kwon:toast-helper-core:$version")
 ```
 
 ### With Android Dependency
@@ -52,7 +39,7 @@ implementation("dylan.kwon:toast-helper-core:$version")
 It includes an implementation of the core module for actual Toast execution.
 
 ```kotlin
-implementation("dylan.kwon:toast-helper-android:$version")
+implementation("io.github.dylan-kwon:toast-helper-android:$version")
 ```
 
 ### Testing
@@ -60,7 +47,7 @@ implementation("dylan.kwon:toast-helper-android:$version")
 It includes rules and test components that can be used in testing.
 
 ```kotlin
-testImplementation("dylan.kwon:toast-helper-test:$version")
+testImplementation("io.github.dylan-kwon:toast-helper-test:$version")
 ```
 
 ## How To Use
